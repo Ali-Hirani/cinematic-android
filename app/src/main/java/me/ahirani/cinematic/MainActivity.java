@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.gson.Gson;
@@ -32,7 +31,6 @@ public class MainActivity extends Activity {
     public List<Repository> repositoriesList = new ArrayList<>();
     public RecyclerView recyclerView;
     public RepositoryRecyclerViewAdapter repositoryRecyclerViewAdapter;
-    private RecyclerView.LayoutManager layoutManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,8 +39,7 @@ public class MainActivity extends Activity {
 
         recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
         repositoryRecyclerViewAdapter = new RepositoryRecyclerViewAdapter(repositoriesList);
-        recyclerView.setAdapter(repositoryRecyclerViewAdapter);
-        layoutManager = new LinearLayoutManager(this);
+        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
 
         PostFetcher fetcher = new PostFetcher();
@@ -111,6 +108,7 @@ public class MainActivity extends Activity {
 
         @Override
         protected void onPostExecute(Object o) {
+            recyclerView.setAdapter(repositoryRecyclerViewAdapter);
         }
     }
 

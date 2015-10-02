@@ -7,6 +7,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 public class RepositoryRecyclerViewAdapter extends RecyclerView.Adapter<RepositoryRecyclerViewAdapter.RepositoryViewHolder> {
@@ -21,11 +24,20 @@ public class RepositoryRecyclerViewAdapter extends RecyclerView.Adapter<Reposito
 
         CardView cardView;
         TextView repositoryName;
+        TextView lastUpdatedDateTime;
+        TextView createdDateTime;
+        TextView repoStars;
+        TextView repoFollowing;
+
 
         public RepositoryViewHolder(View itemView) {
             super(itemView);
             cardView = (CardView) itemView.findViewById(R.id.card_view);
             repositoryName = (TextView) itemView.findViewById(R.id.repo_name);
+            lastUpdatedDateTime = (TextView) itemView.findViewById(R.id.last_updated_date);
+            createdDateTime = (TextView) itemView.findViewById(R.id.creation_date);
+            repoStars = (TextView) itemView.findViewById(R.id.stars);
+            repoFollowing = (TextView) itemView.findViewById(R.id.following);
         }
     }
 
@@ -37,7 +49,29 @@ public class RepositoryRecyclerViewAdapter extends RecyclerView.Adapter<Reposito
 
     @Override
     public void onBindViewHolder(RepositoryViewHolder repositoryViewHolder, int position) {
+        SimpleDateFormat parserSDF = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'");
+        SimpleDateFormat mySDF = new SimpleDateFormat("yyyy-MM-dd");
+
         repositoryViewHolder.repositoryName.setText(repositories.get(position).getName());
+
+        String createdFormattedDate = "";
+        String updatedFormattedDate = "";
+
+        try {
+            Date createdRawDate = parserSDF.parse(repositories.get(position).getCreated_at());
+            Date updatedRawDated = parserSDF.parse(repositories.get(position).getUpdated_at());
+
+            createdFormattedDate = mySDF.format(createdRawDate);
+            updatedFormattedDate = mySDF.format(updatedRawDated);
+
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
+        repositoryViewHolder.createdDateTime.setText("Created on: " + createdFormattedDate);
+        repositoryViewHolder.lastUpdatedDateTime.setText("Last Updated: " + updatedFormattedDate);
+        repositoryViewHolder.repoStars.setText("Stars: " + repositories.get(position).getStargazers_count().toString());
+        repositoryViewHolder.repoFollowing.setText("Followers: " + repositories.get(position).getWatchers_count().toString());
     }
 
     @Override
