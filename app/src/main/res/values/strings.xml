@@ -3,5 +3,6 @@
     <string name="title_activity_main">MainActivity</string>
 
     <string name="action_settings">Settings</string>
-    <string name="film_search_hint_text">Enter Film Title</string>
+    <string name="github_id_hint_text">Enter GitHub ID</string>
+    <string name="search_by_user_button_text">Get Repos</string>
 </resources>

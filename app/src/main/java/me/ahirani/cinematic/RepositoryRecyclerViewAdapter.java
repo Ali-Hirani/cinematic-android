@@ -71,7 +71,7 @@ public class RepositoryRecyclerViewAdapter extends RecyclerView.Adapter<Reposito
         repositoryViewHolder.createdDateTime.setText("Created on: " + createdFormattedDate);
         repositoryViewHolder.lastUpdatedDateTime.setText("Last Updated: " + updatedFormattedDate);
         repositoryViewHolder.repoStars.setText("Stars: " + repositories.get(position).getStargazers_count().toString());
-        repositoryViewHolder.repoFollowing.setText("Followers: " + repositories.get(position).getWatchers_count().toString());
+        repositoryViewHolder.repoFollowing.setText("Following: " + repositories.get(position).getWatchers_count().toString());
     }
 
     @Override
