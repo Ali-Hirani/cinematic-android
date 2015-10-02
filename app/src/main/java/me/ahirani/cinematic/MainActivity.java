@@ -19,8 +19,9 @@ public class MainActivity extends FragmentActivity {
         setContentView(R.layout.main_activity_layout);
         viewPager = (ViewPager) findViewById(R.id.viewpager);
 
-        repoFragmentPagerAdapter = new RepoFragmentPagerAdapter(getSupportFragmentManager(), gitHubIDFromUser);
+        repoFragmentPagerAdapter = new RepoFragmentPagerAdapter(getSupportFragmentManager());
         viewPager.setAdapter(repoFragmentPagerAdapter);
+
     }
 
     public String getGitHubIDFromUser() {
@@ -29,5 +30,8 @@ public class MainActivity extends FragmentActivity {
 
     public void setGitHubIDFromUser(String gitHubIDFromUser) {
         this.gitHubIDFromUser = gitHubIDFromUser;
+        repoFragmentPagerAdapter = new RepoFragmentPagerAdapter(getSupportFragmentManager(), gitHubIDFromUser);
+        viewPager.setAdapter(repoFragmentPagerAdapter);
+        repoFragmentPagerAdapter.notifyDataSetChanged();
     }
 }

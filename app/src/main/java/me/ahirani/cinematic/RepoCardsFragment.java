@@ -30,16 +30,17 @@ import java.util.List;
 
 public class RepoCardsFragment extends Fragment {
     @Nullable
-    private String gitHubIDFromUser;
+    private String gitHubIDFromUser = "ali-hirani";
     private List<Repository> repositoriesList = new ArrayList<>();
     private RecyclerView recyclerView;
     private RepositoryRecyclerViewAdapter repositoryRecyclerViewAdapter;
 
-    static RepoCardsFragment newInstance(int num) {
+    static RepoCardsFragment newInstance(int num, String gitHubIDFromUser) {
         RepoCardsFragment repoCardsFragment = new RepoCardsFragment();
 
         Bundle args = new Bundle();
         args.putInt("num", num);
+        args.putString("ID", gitHubIDFromUser);
         repoCardsFragment.setArguments(args);
 
         return repoCardsFragment;
@@ -60,6 +61,9 @@ public class RepoCardsFragment extends Fragment {
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getActivity());
         recyclerView.setLayoutManager(layoutManager);
 
+        Bundle args = getArguments();
+        this.gitHubIDFromUser = args.getString("ID", gitHubIDFromUser);
+
         PostFetcher fetcher = new PostFetcher();
         fetcher.execute();
 
@@ -79,7 +83,8 @@ public class RepoCardsFragment extends Fragment {
         protected Void doInBackground(Object... params) {
             try {
 
-                String usernameParam = "ali-hirani";
+//                String usernameParam = "ali-hirani";
+                String usernameParam = gitHubIDFromUser;
                 final String url = "https://api.github.com/users/" + usernameParam + "/repos";
 
                 HttpClient client = new DefaultHttpClient();

@@ -6,7 +6,14 @@ import android.support.v4.app.FragmentPagerAdapter;
 
 public class RepoFragmentPagerAdapter extends FragmentPagerAdapter {
 
+    String gitHubIDFromUser;
+
     public RepoFragmentPagerAdapter(FragmentManager fm, String gitHubIDFromUser) {
+        super(fm);
+        this.gitHubIDFromUser = gitHubIDFromUser;
+    }
+
+    public RepoFragmentPagerAdapter(FragmentManager fm) {
         super(fm);
     }
 
@@ -17,7 +24,7 @@ public class RepoFragmentPagerAdapter extends FragmentPagerAdapter {
             case 0:
                 return HomeScreenFragment.newInstance(position);
             case 1:
-                return RepoCardsFragment.newInstance(position);
+                return RepoCardsFragment.newInstance(position, gitHubIDFromUser);
             default:
                 return HomeScreenFragment.newInstance(position);
         }
