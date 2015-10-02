@@ -35,11 +35,10 @@ public class RepoCardsFragment extends Fragment {
     private RecyclerView recyclerView;
     private RepositoryRecyclerViewAdapter repositoryRecyclerViewAdapter;
 
-    static RepoCardsFragment newInstance(int num, String gitHubIDFromUser) {
+    static RepoCardsFragment newInstance(String gitHubIDFromUser) {
         RepoCardsFragment repoCardsFragment = new RepoCardsFragment();
 
         Bundle args = new Bundle();
-        args.putInt("num", num);
         args.putString("ID", gitHubIDFromUser);
         repoCardsFragment.setArguments(args);
 

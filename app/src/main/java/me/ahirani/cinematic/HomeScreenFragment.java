@@ -16,12 +16,11 @@ public class HomeScreenFragment extends Fragment {
     EditText githubIDEditText;
     Button repoSearchButton;
 
-    static HomeScreenFragment newInstance(int num) {
+    static HomeScreenFragment newInstance() {
 
         HomeScreenFragment homeScreenFragment = new HomeScreenFragment();
 
         Bundle args = new Bundle();
-        args.putInt("num", num);
         homeScreenFragment.setArguments(args);
 
         return homeScreenFragment;

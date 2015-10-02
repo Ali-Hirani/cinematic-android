@@ -20,6 +20,7 @@ public class MainActivity extends FragmentActivity {
         viewPager = (ViewPager) findViewById(R.id.viewpager);
 
         repoFragmentPagerAdapter = new RepoFragmentPagerAdapter(getSupportFragmentManager());
+        repoFragmentPagerAdapter.addItemToList(HomeScreenFragment.newInstance());
         viewPager.setAdapter(repoFragmentPagerAdapter);
 
     }
@@ -30,8 +31,8 @@ public class MainActivity extends FragmentActivity {
 
     public void setGitHubIDFromUser(String gitHubIDFromUser) {
         this.gitHubIDFromUser = gitHubIDFromUser;
-        repoFragmentPagerAdapter = new RepoFragmentPagerAdapter(getSupportFragmentManager(), gitHubIDFromUser);
-        viewPager.setAdapter(repoFragmentPagerAdapter);
+        RepoCardsFragment fragment = RepoCardsFragment.newInstance(gitHubIDFromUser);
+        repoFragmentPagerAdapter.addItemToList(fragment);
         repoFragmentPagerAdapter.notifyDataSetChanged();
     }
 }
