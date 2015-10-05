@@ -2,29 +2,32 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_margin="20dp"
+    android:background="#303F9F"
     android:orientation="vertical">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:padding="20dp">
 
         <EditText
             android:id="@+id/github_id_edit_text"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-            android:hint="@string/github_id_hint_text" />
+            android:hint="@string/github_id_hint_text"
+            android:textColor="#fff"
+            android:textColorHint="#fff" />
 
         <Button
             android:id="@+id/repo_search_button"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/github_id_edit_text"
+            android:background="@drawable/button_color_drawable"
             android:clickable="true"
-            android:text="@string/search_by_user_button_text" />
+            android:text="@string/search_by_user_button_text"
+            android:textColor="#ffffff" />
 
     </LinearLayout>
 </RelativeLayout>

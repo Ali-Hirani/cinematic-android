@@ -30,7 +30,7 @@ import java.util.List;
 
 public class RepoCardsFragment extends Fragment {
     @Nullable
-    private String gitHubIDFromUser = "ali-hirani";
+    private String gitHubIDFromUser = "";
     private List<Repository> repositoriesList = new ArrayList<>();
     private RecyclerView recyclerView;
     private RepositoryRecyclerViewAdapter repositoryRecyclerViewAdapter;
@@ -82,7 +82,6 @@ public class RepoCardsFragment extends Fragment {
         protected Void doInBackground(Object... params) {
             try {
 
-//                String usernameParam = "ali-hirani";
                 String usernameParam = gitHubIDFromUser;
                 final String url = "https://api.github.com/users/" + usernameParam + "/repos";
 

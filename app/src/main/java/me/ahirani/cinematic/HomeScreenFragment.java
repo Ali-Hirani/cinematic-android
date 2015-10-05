@@ -1,6 +1,5 @@
 package me.ahirani.cinematic;
 
-import android.app.Activity;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -40,10 +39,25 @@ public class HomeScreenFragment extends Fragment {
             public void onClick(View v) {
 
                 MainActivity parentActivity = (MainActivity) getActivity();
-                parentActivity.setGitHubIDFromUser(githubIDEditText.getText().toString());
+                String gitHubIDFromUser = githubIDEditText.getText().toString();
+
+                if (gitHubIDFromUser != null && !gitHubIDFromUser.isEmpty()) {
+                    parentActivity.setGitHubIDFromUserAndCreateFragment(parsedUserName(gitHubIDFromUser));
+                    Toast.makeText(getActivity(), "Repositories Grabbed!", Toast.LENGTH_SHORT).show();
+                }
             }
         });
 
         return view;
+    }
+
+    private String parsedUserName(String rawUserID) {
+        rawUserID.replaceAll("\\s+", "");
+
+        if (rawUserID != null && !rawUserID.isEmpty()) {
+            return rawUserID;
+        }
+
+        else return rawUserID;
     }
 }

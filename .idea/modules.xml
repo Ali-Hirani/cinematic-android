@@ -2,9 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/Cinematic.iml" filepath="$PROJECT_DIR$/Cinematic.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/cinematic-android.iml" filepath="$PROJECT_DIR$/cinematic-android.iml" />
     </modules>
   </component>
 </project>
-

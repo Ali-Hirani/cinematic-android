@@ -4,5 +4,6 @@
 
     <string name="action_settings">Settings</string>
     <string name="github_id_hint_text">Enter GitHub ID</string>
-    <string name="search_by_user_button_text">Get Repos</string>
+    <string name="search_by_user_button_text">Get Repositories!</string>
+    <string name="home_screen_toolbar_text">Github Repository Browser</string>
 </resources>

@@ -9,16 +9,9 @@ import java.util.List;
 
 public class RepoFragmentPagerAdapter extends FragmentStatePagerAdapter {
 
-    private String gitHubIDFromUser;
     private List<Fragment> fragments = new ArrayList<>();
 
-
-    public RepoFragmentPagerAdapter(FragmentManager fm, String gitHubIDFromUser) {
-        super(fm);
-        this.gitHubIDFromUser = gitHubIDFromUser;
-    }
-
-    public RepoFragmentPagerAdapter(FragmentManager fm) {
+    public RepoFragmentPagerAdapter(FragmentManager fm, int numOfTabs) {
         super(fm);
     }
 
@@ -26,14 +19,6 @@ public class RepoFragmentPagerAdapter extends FragmentStatePagerAdapter {
     public Fragment getItem(int position) {
 
         return fragments.get(position);
-//        switch (position) {
-//            case 0:
-//                return HomeScreenFragment.newInstance(position);
-//            case 1:
-//                return RepoCardsFragment.newInstance(position, gitHubIDFromUser);
-//            default:
-//                return HomeScreenFragment.newInstance(position);
-//        }
     }
 
     @Override
