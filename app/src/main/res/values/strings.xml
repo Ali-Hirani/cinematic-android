@@ -6,4 +6,5 @@
     <string name="github_id_hint_text">Enter GitHub ID</string>
     <string name="search_by_user_button_text">Get Repositories!</string>
     <string name="home_screen_toolbar_text">Github Repository Browser</string>
+    <string name="clear_stored_data_button_text">Clear Stored Repositories</string>
 </resources>

@@ -1,5 +1,7 @@
 package me.ahirani.cinematic;
 
+import android.content.Context;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -14,6 +16,7 @@ public class HomeScreenFragment extends Fragment {
 
     EditText githubIDEditText;
     Button repoSearchButton;
+    Button clearStoredRepoDataButton;
 
     static HomeScreenFragment newInstance() {
 
@@ -31,8 +34,8 @@ public class HomeScreenFragment extends Fragment {
         View view = inflater.inflate(R.layout.home_screen_layout, container, false);
 
         githubIDEditText = (EditText) view.findViewById(R.id.github_id_edit_text);
-        repoSearchButton = (Button) view.findViewById(R.id.repo_search_button);
 
+        repoSearchButton = (Button) view.findViewById(R.id.repo_search_button);
         repoSearchButton.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -44,7 +47,20 @@ public class HomeScreenFragment extends Fragment {
                 if (gitHubIDFromUser != null && !gitHubIDFromUser.isEmpty()) {
                     parentActivity.setGitHubIDFromUserAndCreateFragment(parsedUserName(gitHubIDFromUser));
                     Toast.makeText(getActivity(), "Repositories Grabbed!", Toast.LENGTH_SHORT).show();
+                    githubIDEditText.setText("");
                 }
+            }
+        });
+
+        clearStoredRepoDataButton = (Button) view.findViewById(R.id.clear_stored_data_button);
+        clearStoredRepoDataButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                SharedPreferences sharedPreferences = getActivity().getSharedPreferences("repo-data", Context.MODE_PRIVATE);
+                SharedPreferences.Editor editor = sharedPreferences.edit();
+                editor.clear();
+                editor.apply();
+                Toast.makeText(getActivity(), "Data Cleared!", Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -56,8 +72,6 @@ public class HomeScreenFragment extends Fragment {
 
         if (rawUserID != null && !rawUserID.isEmpty()) {
             return rawUserID;
-        }
-
-        else return rawUserID;
+        } else return rawUserID;
     }
 }

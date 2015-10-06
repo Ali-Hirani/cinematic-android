@@ -18,7 +18,7 @@
             android:layout_height="wrap_content"
             android:hint="@string/github_id_hint_text"
             android:textColor="#fff"
-            android:textColorHint="#fff" />
+            android:textColorHint="#ffd7d7d7" />
 
         <Button
             android:id="@+id/repo_search_button"
@@ -28,6 +28,18 @@
             android:clickable="true"
             android:text="@string/search_by_user_button_text"
             android:textColor="#ffffff" />
-
     </LinearLayout>
+
+    <Button
+        android:id="@+id/clear_stored_data_button"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_margin="20dp"
+        android:background="@drawable/button_color_drawable"
+        android:clickable="true"
+        android:text="@string/clear_stored_data_button_text"
+        android:textColor="#ffffff" />
+
 </RelativeLayout>

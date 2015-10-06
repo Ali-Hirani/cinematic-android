@@ -3,6 +3,7 @@ package me.ahirani.cinematic;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
+import android.support.v4.view.PagerAdapter;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -29,4 +30,14 @@ public class RepoFragmentPagerAdapter extends FragmentStatePagerAdapter {
     public void addItemToList(Fragment fragment) {
         fragments.add(fragment);
     }
+
+    public void removeAllItemsFromList() {
+        fragments.removeAll(fragments);
+    }
+
+    @Override
+    public int getItemPosition(Object object){
+        return PagerAdapter.POSITION_NONE;
+    }
+
 }

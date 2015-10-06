@@ -10,6 +10,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
@@ -26,6 +27,7 @@ import java.io.InputStreamReader;
 import java.io.Reader;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 
 public class RepoCardsFragment extends Fragment {
@@ -55,10 +57,32 @@ public class RepoCardsFragment extends Fragment {
 
         View view = inflater.inflate(R.layout.repo_cards_fragment_layout, container, false);
 
+        MainActivity mainActivity = (MainActivity) getActivity();
+
+        Button closePageButton = (Button) mainActivity.findViewById(R.id.close_page_button);
+        closePageButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                MainActivity parentActivity = (MainActivity) getActivity();
+                if(parentActivity != null) {
+                    parentActivity.closeAllFragments();
+                }
+            }
+        });
+
         recyclerView = (RecyclerView) view.findViewById(R.id.recycler_view);
         repositoryRecyclerViewAdapter = new RepositoryRecyclerViewAdapter(repositoriesList);
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getActivity());
         recyclerView.setLayoutManager(layoutManager);
+
+        recyclerView.addOnItemTouchListener(
+                new RecyclerItemClickListener(getActivity(), new RecyclerItemClickListener.OnItemClickListener() {
+                    @Override
+                    public void onItemClick(View view, int position) {
+
+                    }
+                })
+        );
 
         Bundle args = getArguments();
         this.gitHubIDFromUser = args.getString("ID", gitHubIDFromUser);
@@ -67,11 +91,6 @@ public class RepoCardsFragment extends Fragment {
         fetcher.execute();
 
         return view;
-    }
-
-    @Override
-    public void onViewCreated(View view, Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
     }
 
     public class PostFetcher extends AsyncTask {
@@ -84,6 +103,7 @@ public class RepoCardsFragment extends Fragment {
 
                 String usernameParam = gitHubIDFromUser;
                 final String url = "https://api.github.com/users/" + usernameParam + "/repos";
+//                final String url = "google.ca/";
 
                 HttpClient client = new DefaultHttpClient();
                 HttpGet get = new HttpGet(url);
