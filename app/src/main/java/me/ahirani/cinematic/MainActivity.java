@@ -108,12 +108,12 @@ public class MainActivity extends AppCompatActivity {
 
         closeAllFragments();
 
-        if (!(searchedIDs == null) && !searchedIDs.isEmpty()) {
-            System.out.println("asdf Searched IDs is Length: " + searchedIDs.size());
-//            for (int i = 0; i < searchedIDs.size(); i++) {
-            setGitHubIDFromUserAndCreateFragment(searchedIDs.get(0));
-//            }
-        }
+//        if (!(searchedIDs == null) && !searchedIDs.isEmpty()) {
+//            System.out.println("asdf Searched IDs is Length: " + searchedIDs.size());
+////            for (int i = 0; i < searchedIDs.size(); i++) {
+//            setGitHubIDFromUserAndCreateFragment(searchedIDs.get(0));
+////            }
+//        }
     }
 
     public void setGitHubIDFromUserAndCreateFragment(String gitHubIDFromUser) {

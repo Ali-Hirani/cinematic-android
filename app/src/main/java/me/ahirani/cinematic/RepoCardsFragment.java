@@ -1,5 +1,6 @@
 package me.ahirani.cinematic;
 
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -64,7 +65,7 @@ public class RepoCardsFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 MainActivity parentActivity = (MainActivity) getActivity();
-                if(parentActivity != null) {
+                if (parentActivity != null) {
                     parentActivity.closeAllFragments();
                 }
             }
@@ -79,7 +80,12 @@ public class RepoCardsFragment extends Fragment {
                 new RecyclerItemClickListener(getActivity(), new RecyclerItemClickListener.OnItemClickListener() {
                     @Override
                     public void onItemClick(View view, int position) {
+                        Intent intent = new Intent(getActivity(), RepositoryItemActivity.class);
 
+                        String serializedRepoID = new Gson().toJson(repositoriesList.get(position));
+                        intent.putExtra("Repository", serializedRepoID);
+
+                        startActivity(intent);
                     }
                 })
         );

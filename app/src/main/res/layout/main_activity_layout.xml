@@ -16,10 +16,10 @@
 
         <Button
             android:id="@+id/close_page_button"
-            android:layout_height="30dp"
             android:layout_width="30dp"
+            android:layout_height="30dp"
             android:layout_marginLeft="70dp"
-            android:background="@drawable/button_color_drawable"/>
+            android:background="@drawable/button_color_drawable" />
 
     </android.support.v7.widget.Toolbar>
 

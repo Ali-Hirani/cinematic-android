@@ -70,7 +70,7 @@ public class HomeScreenFragment extends Fragment {
     private String parsedUserName(String rawUserID) {
         rawUserID.replaceAll("\\s+", "");
 
-        if (rawUserID != null && !rawUserID.isEmpty()) {
+        if (!rawUserID.isEmpty()) {
             return rawUserID;
         } else return rawUserID;
     }
